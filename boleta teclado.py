@@ -7,8 +7,8 @@ import time
 
 def ejecutar_codigo(datos_para_insertar):
     # Coordenadas de la consola
-    x_clic_adicional_1 = 784
-    y_clic_adicional_1 = 340
+    x_clic_adicional_1 = 919
+    y_clic_adicional_1 = 263
 
     
     pyautogui.click(x_clic_adicional_1, y_clic_adicional_1, duration=1)
@@ -16,12 +16,15 @@ def ejecutar_codigo(datos_para_insertar):
     pyautogui.press('tab')      
     pyautogui.press('tab')
     for datos in datos_para_insertar:
-        precio_unitario_ajustado = round(datos["precio"] / 1.18, 10)
-        
 
+        if datos["IGV"] == 'no':
+                precio_unitario_ajustado = (datos["precio"])
+        else:
+                precio_unitario_ajustado = round(datos["precio"] / 1.18, 10)
+        
         # Presiona la tecla Tab
         pyautogui.press('enter')
-        time.sleep(1)
+        time.sleep(2)
 
         pyautogui.press('right')
         # pyautogui.click(x_clic_adicional_2, y_clic_adicional_2, duration=1)
@@ -63,7 +66,7 @@ def ejecutar_codigo(datos_para_insertar):
         pyautogui.press('tab')
         pyautogui.press('enter')
 
-        time.sleep(1)
+        time.sleep(2)
 
 def leer_excel(nombre_archivo):
     try:
